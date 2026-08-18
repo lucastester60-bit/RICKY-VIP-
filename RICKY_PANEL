@@ -1,0 +1,1107 @@
+-- ====================================================================
+-- SISTEMA DE KEY (KEY SYSTEM) - PAINEL RICKY VIP
+-- ====================================================================
+
+-- Lista de Keys válidas geradas automaticamente (50 de cada tipo)
+local ValidKeys = {
+    -- 2 Keys de teste informadas (Dias restantes simulados: 5 e 30)
+    ["RCKY-5P0W-22"] = 5,
+    ["RCKY-VIP-TEST"] = 30,
+
+    -- 5 Dias (50 keys)
+    ["RCKY-5D-A1B2"] = 5, ["RCKY-5D-C3D4"] = 5, ["RCKY-5D-E5F6"] = 5, ["RCKY-5D-G7H8"] = 5, ["RCKY-5D-I9J0"] = 5,
+    ["RCKY-5D-K1L2"] = 5, ["RCKY-5D-M3N4"] = 5, ["RCKY-5D-O5P6"] = 5, ["RCKY-5D-Q7R8"] = 5, ["RCKY-5D-S9T0"] = 5,
+    ["RCKY-5D-U1V2"] = 5, ["RCKY-5D-W3X4"] = 5, ["RCKY-5D-Y5Z6"] = 5, ["RCKY-5D-A7B8"] = 5, ["RCKY-5D-C9D0"] = 5,
+    ["RCKY-5D-E1F2"] = 5, ["RCKY-5D-G3H4"] = 5, ["RCKY-5D-I5J6"] = 5, ["RCKY-5D-K7L8"] = 5, ["RCKY-5D-M9N0"] = 5,
+    ["RCKY-5D-O1P2"] = 5, ["RCKY-5D-Q3R4"] = 5, ["RCKY-5D-S5T6"] = 5, ["RCKY-5D-U7V8"] = 5, ["RCKY-5D-W9X0"] = 5,
+    ["RCKY-5D-Y1Z2"] = 5, ["RCKY-5D-B3C4"] = 5, ["RCKY-5D-D5E6"] = 5, ["RCKY-5D-F7G8"] = 5, ["RCKY-5D-H9I0"] = 5,
+    ["RCKY-5D-J1K2"] = 5, ["RCKY-5D-L3M4"] = 5, ["RCKY-5D-N5O6"] = 5, ["RCKY-5D-P7Q8"] = 5, ["RCKY-5D-R9S0"] = 5,
+    ["RCKY-5D-T1U2"] = 5, ["RCKY-5D-V3W4"] = 5, ["RCKY-5D-X5Y6"] = 5, ["RCKY-5D-Z7A8"] = 5, ["RCKY-5D-B9C0"] = 5,
+    ["RCKY-5D-D1E2"] = 5, ["RCKY-5D-F3G4"] = 5, ["RCKY-5D-H5I6"] = 5, ["RCKY-5D-J7K8"] = 5, ["RCKY-5D-L9M0"] = 5,
+    ["RCKY-5D-N1O2"] = 5, ["RCKY-5D-P3Q4"] = 5, ["RCKY-5D-R5S6"] = 5, ["RCKY-5D-T7U8"] = 5, ["RCKY-5D-V9W0"] = 5,
+
+    -- 10 Dias (50 keys)
+    ["RCKY-10-A1B2"] = 10, ["RCKY-10-C3D4"] = 10, ["RCKY-10-E5F6"] = 10, ["RCKY-10-G7H8"] = 10, ["RCKY-10-I9J0"] = 10,
+    ["RCKY-10-K1L2"] = 10, ["RCKY-10-M3N4"] = 10, ["RCKY-10-O5P6"] = 10, ["RCKY-10-Q7R8"] = 10, ["RCKY-10-S9T0"] = 10,
+    ["RCKY-10-U1V2"] = 10, ["RCKY-10-W3X4"] = 10, ["RCKY-10-Y5Z6"] = 10, ["RCKY-10-A7B8"] = 10, ["RCKY-10-C9D0"] = 10,
+    ["RCKY-10-E1F2"] = 10, ["RCKY-10-G3H4"] = 10, ["RCKY-10-I5J6"] = 10, ["RCKY-10-K7L8"] = 10, ["RCKY-10-M9N0"] = 10,
+    ["RCKY-10-O1P2"] = 10, ["RCKY-10-Q3R4"] = 10, ["RCKY-10-S5T6"] = 10, ["RCKY-10-U7V8"] = 10, ["RCKY-10-W9X0"] = 10,
+    ["RCKY-10-Y1Z2"] = 10, ["RCKY-10-B3C4"] = 10, ["RCKY-10-D5E6"] = 10, ["RCKY-10-F7G8"] = 10, ["RCKY-10-H9I0"] = 10,
+    ["RCKY-10-J1K2"] = 10, ["RCKY-10-L3M4"] = 10, ["RCKY-10-N5O6"] = 10, ["RCKY-10-P7Q8"] = 10, ["RCKY-10-R9S0"] = 10,
+    ["RCKY-10-T1U2"] = 10, ["RCKY-10-V3W4"] = 10, ["RCKY-10-X5Y6"] = 10, ["RCKY-10-Z7A8"] = 10, ["RCKY-10-B9C0"] = 10,
+    ["RCKY-10-D1E2"] = 10, ["RCKY-10-F3G4"] = 10, ["RCKY-10-H5I6"] = 10, ["RCKY-10-J7K8"] = 10, ["RCKY-10-L9M0"] = 10,
+    ["RCKY-10-N1O2"] = 10, ["RCKY-10-P3Q4"] = 10, ["RCKY-10-R5S6"] = 10, ["RCKY-10-T7U8"] = 10, ["RCKY-10-V9W0"] = 10,
+
+    -- 15 Dias (50 keys)
+    ["RCKY-15-A1B2"] = 15, ["RCKY-15-C3D4"] = 15, ["RCKY-15-E5F6"] = 15, ["RCKY-15-G7H8"] = 15, ["RCKY-15-I9J0"] = 15,
+    ["RCKY-15-K1L2"] = 15, ["RCKY-15-M3N4"] = 15, ["RCKY-15-O5P6"] = 15, ["RCKY-15-Q7R8"] = 15, ["RCKY-15-S9T0"] = 15,
+    ["RCKY-15-U1V2"] = 15, ["RCKY-15-W3X4"] = 15, ["RCKY-15-Y5Z6"] = 15, ["RCKY-15-A7B8"] = 15, ["RCKY-15-C9D0"] = 15,
+    ["RCKY-15-E1F2"] = 15, ["RCKY-15-G3H4"] = 15, ["RCKY-15-I5J6"] = 15, ["RCKY-15-K7L8"] = 15, ["RCKY-15-M9N0"] = 15,
+    ["RCKY-15-O1P2"] = 15, ["RCKY-15-Q3R4"] = 15, ["RCKY-15-S5T6"] = 15, ["RCKY-15-U7V8"] = 15, ["RCKY-15-W9X0"] = 15,
+    ["RCKY-15-Y1Z2"] = 15, ["RCKY-15-B3C4"] = 15, ["RCKY-15-D5E6"] = 15, ["RCKY-15-F7G8"] = 15, ["RCKY-15-H9I0"] = 15,
+    ["RCKY-15-J1K2"] = 15, ["RCKY-15-L3M4"] = 15, ["RCKY-15-N5O6"] = 15, ["RCKY-15-P7Q8"] = 15, ["RCKY-15-R9S0"] = 15,
+    ["RCKY-15-T1U2"] = 15, ["RCKY-15-V3W4"] = 15, ["RCKY-15-X5Y6"] = 15, ["RCKY-15-Z7A8"] = 15, ["RCKY-15-B9C0"] = 15,
+    ["RCKY-15-D1E2"] = 15, ["RCKY-15-F3G4"] = 15, ["RCKY-15-H5I6"] = 15, ["RCKY-15-J7K8"] = 15, ["RCKY-15-L9M0"] = 15,
+    ["RCKY-15-N1O2"] = 15, ["RCKY-15-P3Q4"] = 15, ["RCKY-15-R5S6"] = 15, ["RCKY-15-T7U8"] = 15, ["RCKY-15-V9W0"] = 15,
+
+    -- 30 Dias (50 keys)
+    ["RCKY-30-A1B2"] = 30, ["RCKY-30-C3D4"] = 30, ["RCKY-30-E5F6"] = 30, ["RCKY-30-G7H8"] = 30, ["RCKY-30-I9J0"] = 30,
+    ["RCKY-30-K1L2"] = 30, ["RCKY-30-M3N4"] = 30, ["RCKY-30-O5P6"] = 30, ["RCKY-30-Q7R8"] = 30, ["RCKY-30-S9T0"] = 30,
+    ["RCKY-30-U1V2"] = 30, ["RCKY-30-W3X4"] = 30, ["RCKY-30-Y5Z6"] = 30, ["RCKY-30-A7B8"] = 30, ["RCKY-30-C9D0"] = 30,
+    ["RCKY-30-E1F2"] = 30, ["RCKY-30-G3H4"] = 30, ["RCKY-30-I5J6"] = 30, ["RCKY-30-K7L8"] = 30, ["RCKY-30-M9N0"] = 30,
+    ["RCKY-30-O1P2"] = 30, ["RCKY-30-Q3R4"] = 30, ["RCKY-30-S5T6"] = 30, ["RCKY-30-U7V8"] = 30, ["RCKY-30-W9X0"] = 30,
+    ["RCKY-30-Y1Z2"] = 30, ["RCKY-30-B3C4"] = 30, ["RCKY-30-D5E6"] = 30, ["RCKY-30-F7G8"] = 30, ["RCKY-30-H9I0"] = 30,
+    ["RCKY-30-J1K2"] = 30, ["RCKY-30-L3M4"] = 30, ["RCKY-30-N5O6"] = 30, ["RCKY-30-P7Q8"] = 30, ["RCKY-30-R9S0"] = 30,
+    ["RCKY-30-T1U2"] = 30, ["RCKY-30-V3W4"] = 30, ["RCKY-30-X5Y6"] = 30, ["RCKY-30-Z7A8"] = 30, ["RCKY-30-B9C0"] = 30,
+    ["RCKY-30-D1E2"] = 30, ["RCKY-30-F3G4"] = 30, ["RCKY-30-H5I6"] = 30, ["RCKY-30-J7K8"] = 30, ["RCKY-30-L9M0"] = 30,
+    ["RCKY-30-N1O2"] = 30, ["RCKY-30-P3Q4"] = 30, ["RCKY-30-R5S6"] = 30, ["RCKY-30-T7U8"] = 30, ["RCKY-30-V9W0"] = 30,
+
+    -- Permanent (PERM = 9999 Dias)
+    ["RCKY-PERM-A1B2"] = 9999, ["RCKY-PERM-C3D4"] = 9999, ["RCKY-PERM-E5F6"] = 9999, ["RCKY-PERM-G7H8"] = 9999, ["RCKY-PERM-I9J0"] = 9999,
+    ["RCKY-PERM-K1L2"] = 9999, ["RCKY-PERM-M3N4"] = 9999, ["RCKY-PERM-O5P6"] = 9999, ["RCKY-PERM-Q7R8"] = 9999, ["RCKY-PERM-S9T0"] = 9999,
+    ["RCKY-PERM-U1V2"] = 9999, ["RCKY-PERM-W3X4"] = 9999, ["RCKY-PERM-Y5Z6"] = 9999, ["RCKY-PERM-A7B8"] = 9999, ["RCKY-PERM-C9D0"] = 9999,
+    ["RCKY-PERM-E1F2"] = 9999, ["RCKY-PERM-G3H4"] = 9999, ["RCKY-PERM-I5J6"] = 9999, ["RCKY-PERM-K7L8"] = 9999, ["RCKY-PERM-M9N0"] = 9999,
+    ["RCKY-PERM-O1P2"] = 9999, ["RCKY-PERM-Q3R4"] = 9999, ["RCKY-PERM-S5T6"] = 9999, ["RCKY-PERM-U7V8"] = 9999, ["RCKY-PERM-W9X0"] = 9999,
+    ["RCKY-PERM-Y1Z2"] = 9999, ["RCKY-PERM-B3C4"] = 9999, ["RCKY-PERM-D5E6"] = 9999, ["RCKY-PERM-F7G8"] = 9999, ["RCKY-PERM-H9I0"] = 9999,
+    ["RCKY-PERM-J1K2"] = 9999, ["RCKY-PERM-L3M4"] = 9999, ["RCKY-PERM-N5O6"] = 9999, ["RCKY-PERM-P7Q8"] = 9999, ["RCKY-PERM-R9S0"] = 9999,
+    ["RCKY-PERM-T1U2"] = 9999, ["RCKY-PERM-V3W4"] = 9999, ["RCKY-PERM-X5Y6"] = 9999, ["RCKY-PERM-Z7A8"] = 9999, ["RCKY-PERM-B9C0"] = 9999,
+    ["RCKY-PERM-D1E2"] = 9999, ["RCKY-PERM-F3G4"] = 9999, ["RCKY-PERM-H5I6"] = 9999, ["RCKY-PERM-J7K8"] = 9999, ["RCKY-PERM-L9M0"] = 9999,
+    ["RCKY-PERM-N1O2"] = 9999, ["RCKY-PERM-P3Q4"] = 9999, ["RCKY-PERM-R5S6"] = 9999, ["RCKY-PERM-T7U8"] = 9999, ["RCKY-PERM-V9W0"] = 9999,
+}
+
+local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+local LocalPlayer = Players.LocalPlayer
+
+local KeyAuthenticated = false
+local remainingSecondsAPI = 0
+
+-- Criação da Interface da Key System
+local KeyGui = Instance.new("ScreenGui")
+KeyGui.Name = "RickyKeySystem"
+KeyGui.ResetOnSpawn = false
+KeyGui.Parent = CoreGui
+
+local MainFrame = Instance.new("Frame", KeyGui)
+MainFrame.Size = UDim2.new(0, 380, 0, 220)
+MainFrame.Position = UDim2.new(0.5, -190, 0.5, -110)
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+MainFrame.BorderSizePixel = 0
+
+local UICorner = Instance.new("UICorner", MainFrame)
+UICorner.CornerRadius = UDim.new(0, 8)
+
+local UIStroke = Instance.new("UIStroke", MainFrame)
+UIStroke.Thickness = 2
+UIStroke.Color = Color3.fromRGB(0, 255, 100)
+
+local Title = Instance.new("TextLabel", MainFrame)
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.BackgroundTransparency = 1
+Title.Text = "PAINEL RICKY VIP - KEY SYSTEM"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 16
+Title.Font = Enum.Font.GothamBold
+
+local TextBox = Instance.new("TextBox", MainFrame)
+TextBox.Size = UDim2.new(0.85, 0, 0, 40)
+TextBox.Position = UDim2.new(0.075, 0, 0.35, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.PlaceholderText = "Insira sua Key aqui... (Ex: RCKY-5P0W-22)"
+TextBox.Text = ""
+TextBox.TextSize = 14
+TextBox.Font = Enum.Font.Gotham
+Instance.new("UICorner", TextBox).CornerRadius = UDim.new(0, 6)
+
+local SubmitBtn = Instance.new("TextButton", MainFrame)
+SubmitBtn.Size = UDim2.new(0.85, 0, 0, 40)
+SubmitBtn.Position = UDim2.new(0.075, 0, 0.62, 0)
+SubmitBtn.BackgroundColor3 = Color3.fromRGB(0, 200, 80)
+SubmitBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+SubmitBtn.Text = "Verificar Key"
+SubmitBtn.TextSize = 14
+SubmitBtn.Font = Enum.Font.GothamBold
+Instance.new("UICorner", SubmitBtn).CornerRadius = UDim.new(0, 6)
+
+local StatusLabel = Instance.new("TextLabel", MainFrame)
+StatusLabel.Size = UDim2.new(1, 0, 0, 25)
+StatusLabel.Position = UDim2.new(0, 0, 0.85, 0)
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Text = ""
+StatusLabel.TextColor3 = Color3.fromRGB(255, 50, 50)
+StatusLabel.TextSize = 12
+StatusLabel.Font = Enum.Font.Gotham
+
+SubmitBtn.MouseButton1Click:Connect(function()
+    local userKey = TextBox.Text
+    local days = ValidKeys[userKey]
+    if days then
+        StatusLabel.TextColor3 = Color3.fromRGB(0, 255, 100)
+        StatusLabel.Text = "Key válida! Carregando..."
+        remainingSecondsAPI = days * 86400 -- converte dias para segundos para contagem ao vivo
+        task.wait(1)
+        KeyGui:Destroy()
+        KeyAuthenticated = true
+    else
+        StatusLabel.TextColor3 = Color3.fromRGB(255, 50, 50)
+        StatusLabel.Text = "Key inválida ou expirada!"
+    end
+end)
+
+repeat task.wait(0.1) until KeyAuthenticated
+
+-- ====================================================================
+-- PAINEL RICKY VIP (CÓDIGO PRINCIPAL)
+-- ====================================================================
+
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
+local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
+
+local Options = Library.Options
+local Toggles = Library.Toggles
+
+Library.ForceCheckbox = false
+Library.ShowToggleFrameInKeybinds = true
+
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Workspace = game:GetService("Workspace")
+local Camera = Workspace.CurrentCamera
+
+local assetId = 126641896184699
+local finalIcon = "rbxassetid://" .. assetId
+
+local Window = Library:CreateWindow({
+	Title = "PAINEL RICKY VIP",
+	Footer = "version: PAINEL RICKY VIP FULL",
+	Icon = finalIcon,
+	NotifySide = "Right",
+	ShowCustomCursor = true,
+})
+
+pcall(function()
+    local VirtualUser = game:GetService("VirtualUser")
+    LocalPlayer.Idled:Connect(function()
+        VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+    end)
+end)
+
+local Tabs = {
+	Combat = Window:AddTab("Combat", "swords"),
+	Visuals = Window:AddTab("Visuals", "eye"),
+    Logs = Window:AddTab("Logs", "terminal"),
+	["UI Settings"] = Window:AddTab("UI Settings", "settings"),
+}
+
+--------------------------------------------------------------------------------
+-- ABA: LOGS & API TIMER AO VIVO
+--------------------------------------------------------------------------------
+local LogsGroup = Tabs.Logs:AddLeftGroupbox("Status da Conta & Tempo Restante")
+local UsernameLabel = LogsGroup:AddLabel("Usuário: " .. LocalPlayer.Name)
+local APIStatusLabel = LogsGroup:AddLabel("Status da API: Conectado")
+local LiveTimeLabel = LogsGroup:AddLabel("Tempo Restante: Calculando...")
+
+task.spawn(function()
+    while task.wait(1) do
+        if remainingSecondsAPI < 99990000 then
+            if remainingSecondsAPI > 0 then
+                remainingSecondsAPI = remainingSecondsAPI - 1
+            end
+            local d = math.floor(remainingSecondsAPI / 86400)
+            local h = math.floor((remainingSecondsAPI % 86400) / 3600)
+            local m = math.floor((remainingSecondsAPI % 3600) / 60)
+            local s = remainingSecondsAPI % 60
+            LiveTimeLabel:SetText(string.format("Restante: %d Dias, %02d:%02d:%02d", d, h, m, s))
+        else
+            LiveTimeLabel:SetText("Tempo Restante: Vitalício (PERM)")
+        end
+    end
+end)
+
+--------------------------------------------------------------------------------
+-- COMBAT GUI SETUP
+--------------------------------------------------------------------------------
+local AimbotBox = Tabs.Combat:AddLeftGroupbox("Aimbot Settings")
+local SilentBox = Tabs.Combat:AddLeftGroupbox("Silent Aim Settings")
+local FovBox = Tabs.Combat:AddRightGroupbox("FOV Circle Settings")
+
+AimbotBox:AddToggle("Combat_Aimbot_Enable", { Text = "Enable Aimbot", Default = false })
+AimbotBox:AddDropdown("Combat_Aimbot_Target", { Values = { "Head", "HumanoidRootPart" }, Default = "Head", Text = "Target Part" })
+AimbotBox:AddSlider("Combat_Aimbot_MaxDistance", { Text = "Max Distance", Min = 50, Max = 1000, Default = 250, Rounding = 0 })
+AimbotBox:AddToggle("Combat_Aimbot_WallCheck", { Text = "Wall Check", Default = true })
+
+SilentBox:AddToggle("Combat_SilentAim_Enable", { Text = "Enable Silent Aim", Default = false })
+SilentBox:AddDropdown("Combat_SilentAim_Target", { Values = { "Head", "HumanoidRootPart" }, Default = "Head", Text = "Target Part" })
+SilentBox:AddSlider("Combat_SilentAim_FovRadius", { Text = "Silent FOV Radius", Min = 10, Max = 500, Default = 150, Rounding = 0 })
+SilentBox:AddToggle("Combat_SilentAim_WallCheck", { Text = "Wall Check", Default = true })
+
+AimbotBox:AddToggle("Combat_TeamCheck", { Text = "Team Check (Ignore Team)", Default = true })
+AimbotBox:AddToggle("Combat_IgnoreKnocked", { Text = "Ignore Dead / Knocked", Default = true })
+
+AimbotBox:AddToggle("Combat_Aimbot_Smooth_Enable", { Text = "Enable Smoothing", Default = true })
+AimbotBox:AddSlider("Combat_Aimbot_Smooth_Amount", { Text = "Smoothness Amount", Min = 1, Max = 50, Default = 10, Rounding = 1 })
+AimbotBox:AddToggle("Combat_Aimbot_Prediction_Enable", { Text = "Enable Prediction", Default = false })
+AimbotBox:AddSlider("Combat_Aimbot_Prediction_Amount", { Text = "Prediction Amount", Min = 0.1, Max = 2.0, Default = 0.165, Rounding = 3 })
+
+FovBox:AddToggle("Combat_Fov_Enable", { Text = "Show FOV Circle", Default = false })
+FovBox:AddSlider("Combat_Fov_Radius", { Text = "FOV Radius", Min = 0, Max = 500, Default = 80, Rounding = 0 })
+FovBox:AddLabel("FOV Color"):AddColorPicker("Combat_Fov_Color", { Default = Color3.fromRGB(0, 255, 100) })
+
+--------------------------------------------------------------------------------
+-- HITBOX EXPANDER GUI SETUP
+--------------------------------------------------------------------------------
+local HitboxBox = Tabs.Combat:AddRightGroupbox("Hitbox Expander Settings")
+
+HitboxBox:AddToggle("Combat_Hitbox_Enable", { Text = "Enable Hitbox Expander", Default = false })
+HitboxBox:AddDropdown("Combat_Hitbox_Target", {
+	Values = { "HumanoidRootPart", "Head", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg", "All Parts" },
+	Default = "HumanoidRootPart",
+	Text = "Target Part"
+})
+HitboxBox:AddSlider("Combat_Hitbox_Size", { Text = "Hitbox Size", Min = 1, Max = 80, Default = 10, Rounding = 1 })
+HitboxBox:AddSlider("Combat_Hitbox_Transparency", { Text = "Hitbox Transparency", Min = 0, Max = 1, Default = 0.7, Rounding = 2 })
+
+--------------------------------------------------------------------------------
+-- VISUALS GUI SETUP
+--------------------------------------------------------------------------------
+local GeneralVis = Tabs.Visuals:AddLeftGroupbox("General Settings")
+local MasterEspBox = Tabs.Visuals:AddLeftGroupbox("Master ESP")
+local RgbEspBox = Tabs.Visuals:AddLeftGroupbox("RGB ESP Engine")
+local BoxEsp = Tabs.Visuals:AddLeftGroupbox("Box & Healthbar ESP")
+local SkeletonEsp = Tabs.Visuals:AddLeftGroupbox("Skeleton ESP")
+local TagsEsp = Tabs.Visuals:AddRightGroupbox("Player Tags & Info")
+local TracerEsp = Tabs.Visuals:AddRightGroupbox("Tracer Settings")
+local EspStyleBox = Tabs.Visuals:AddRightGroupbox("ESP Styling & Size")
+
+GeneralVis:AddSlider("Vis_MaxDistance", { Text = "Max Distance", Min = 50, Max = 5000, Default = 1000, Rounding = 0 })
+GeneralVis:AddToggle("Vis_FriendCheck", { Text = "FriendCheck", Default = true })
+GeneralVis:AddToggle("Vis_IncludeNPCs", { Text = "Include NPCs / Bots", Default = true })
+
+MasterEspBox:AddToggle("Master_ESP_Enable", {
+	Text = "Enable ESP (Master)",
+	Default = false,
+})
+
+RgbEspBox:AddToggle("RGB_ESP_All", { Text = "Enable RGB ESP ALL", Default = false })
+RgbEspBox:AddDropdown("RGB_Mode", { Values = { "Rainbow", "Wave", "Pulse", "Cycle", "Flash" }, Default = "Rainbow", Text = "RGB Mode" })
+RgbEspBox:AddSlider("RGB_Speed", { Text = "RGB Speed", Min = 1, Max = 80, Default = 20, Rounding = 0 })
+RgbEspBox:AddLabel("Base Color (Pulse/Flash)"):AddColorPicker("RGB_BaseColor", { Default = Color3.fromRGB(255, 0, 0) })
+
+BoxEsp:AddToggle("Box_Enable", { Text = "Enable Box ESP", Default = false })
+BoxEsp:AddDropdown("Box_Style", { Values = { "2D Box", "2D Corner Box" }, Default = "2D Box", Text = "Box Style" })
+BoxEsp:AddLabel("Box Color"):AddColorPicker("Box_Color", { Default = Color3.fromRGB(0, 255, 150) })
+
+BoxEsp:AddToggle("Health_Enable", { Text = "Enable HealthBar", Default = false })
+BoxEsp:AddDropdown("Health_Position", { Values = { "Left", "Right", "Top", "Bottom" }, Default = "Left", Text = "HealthBar Side" })
+
+SkeletonEsp:AddToggle("Skel_Enable", { Text = "Enable Skeleton ESP", Default = false })
+SkeletonEsp:AddLabel("Skeleton Color"):AddColorPicker("Skel_Color", { Default = Color3.fromRGB(255, 255, 255) })
+
+TagsEsp:AddToggle("Tags_Name", { Text = "Enable Name ESP", Default = false }):AddColorPicker("Tags_NameColor", { Default = Color3.fromRGB(255, 255, 255) })
+
+TracerEsp:AddToggle("Tracer_Enable", { Text = "Enable Tracer", Default = false })
+TracerEsp:AddDropdown("Tracer_Origin", { Values = { "Bottom", "Middle", "Top", "Mouse" }, Default = "Bottom", Text = "Tracer Origin" })
+TracerEsp:AddLabel("Tracer Color"):AddColorPicker("Tracer_Color", { Default = Color3.fromRGB(255, 255, 255) })
+
+EspStyleBox:AddSlider("Esp_BoxThickness", { Text = "Box Thickness", Min = 1, Max = 10, Default = 2, Rounding = 1 })
+EspStyleBox:AddSlider("Esp_TracerThickness", { Text = "Tracer Thickness", Min = 1, Max = 10, Default = 2, Rounding = 1 })
+EspStyleBox:AddSlider("Esp_SkelThickness", { Text = "Skeleton Thickness", Min = 1, Max = 10, Default = 2, Rounding = 1 })
+EspStyleBox:AddSlider("Esp_TextSize", { Text = "Name Tag Size", Min = 10, Max = 32, Default = 16, Rounding = 0 })
+
+--------------------------------------------------------------------------------
+-- ABA: UI SETTINGS
+--------------------------------------------------------------------------------
+local MenuGroup = Tabs["UI Settings"]:AddLeftGroupbox("Menu", "wrench")
+
+MenuGroup:AddToggle("KeybindMenuOpen", {
+	Default = Library.KeybindFrame.Visible,
+	Text = "Open Keybind Menu",
+	Callback = function(value) Library.KeybindFrame.Visible = value end,
+})
+MenuGroup:AddToggle("ShowCustomCursor", {
+	Text = "Custom Cursor",
+	Default = true,
+	Callback = function(Value) Library.ShowCustomCursor = Value end,
+})
+MenuGroup:AddDropdown("NotificationSide", {
+	Values = { "Left", "Right" },
+	Default = "Right",
+	Text = "Notification Side",
+	Callback = function(Value) Library:SetNotifySide(Value) end,
+})
+MenuGroup:AddDropdown("DPIDropdown", {
+	Values = { "50%", "75%", "100%", "125%", "150%", "175%", "200%" },
+	Default = "100%",
+	Text = "DPI Scale",
+	Callback = function(Value)
+		Value = Value:gsub("%%", "")
+		local DPI = tonumber(Value)
+		Library:SetDPIScale(DPI)
+	end,
+})
+MenuGroup:AddSlider("UICornerSlider", {
+	Text = "Corner Radius",
+	Default = Library.CornerRadius or 0,
+	Min = 0,
+	Max = 20,
+	Rounding = 0,
+	Callback = function(value) Window:SetCornerRadius(value) end
+})
+MenuGroup:AddDivider()
+MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", { Default = "RightShift", NoUI = true, Text = "Menu keybind" })
+MenuGroup:AddButton("Unload", function() Library:Unload() end)
+
+Library.ToggleKeybind = Options.MenuKeybind
+
+ThemeManager:SetLibrary(Library)
+SaveManager:SetLibrary(Library)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({ "MenuKeybind" })
+
+ThemeManager:SetFolder("PAINEL_RICKY")
+SaveManager:SetFolder("PAINEL_RICKY/game")
+
+SaveManager:BuildConfigSection(Tabs["UI Settings"])
+ThemeManager:ApplyToTab(Tabs["UI Settings"])
+
+-- ====================================================================
+-- FOV CIRCLES & ENGINE DE SUPORTE
+-- ====================================================================
+
+local FovGui = Instance.new("ScreenGui")
+FovGui.Name = "FovCircleGUI"
+FovGui.ResetOnSpawn = false
+FovGui.Parent = game.CoreGui
+FovGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+FovGui.IgnoreGuiInset = true
+
+local FovFrame = Instance.new("Frame", FovGui)
+FovFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+FovFrame.BackgroundTransparency = 1
+FovFrame.BorderSizePixel = 0
+FovFrame.Visible = false
+
+local FovStroke = Instance.new("UIStroke", FovFrame)
+FovStroke.Thickness = 2
+FovStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Instance.new("UICorner", FovFrame).CornerRadius = UDim.new(1, 0)
+
+local RGB_Color = Color3.fromRGB(255, 0, 0)
+task.spawn(function()
+    local hue = 0
+    local timer = 0
+    while task.wait(0.03) do
+        local speed = Options.RGB_Speed and Options.RGB_Speed.Value or 20
+        local mode = Options.RGB_Mode and Options.RGB_Mode.Value or "Rainbow"
+        local baseColor = Options.RGB_BaseColor and Options.RGB_BaseColor.Value or Color3.fromRGB(255, 0, 0)
+        
+        timer = timer + (speed / 100)
+        hue = (hue + (speed / 1000)) % 1
+
+        if mode == "Rainbow" then
+            RGB_Color = Color3.fromHSV(hue, 1, 1)
+        elseif mode == "Wave" then
+            local wave = (math.sin(timer) + 1) / 2
+            RGB_Color = Color3.fromHSV(wave, 1, 1)
+        elseif mode == "Pulse" then
+            local val = (math.sin(timer * 2) + 1) / 2
+            local h, s, _ = baseColor:ToHSV()
+            RGB_Color = Color3.fromHSV(h, s, math.clamp(val, 0.2, 1))
+        elseif mode == "Cycle" then
+            local cycleHue = (math.floor(timer) * 0.2) % 1
+            RGB_Color = Color3.fromHSV(cycleHue, 1, 1)
+        elseif mode == "Flash" then
+            local isFlash = (math.sin(timer * 5) > 0)
+            RGB_Color = isFlash and baseColor or Color3.fromRGB(20, 20, 20)
+        end
+    end
+end)
+
+local function GetColor(pickerColor)
+    if Toggles.RGB_ESP_All and Toggles.RGB_ESP_All.Value then
+        return RGB_Color
+    end
+    return pickerColor or Color3.fromRGB(255, 255, 255)
+end
+
+local function IsFriend(player)
+    if not player or not player:IsA("Player") then return false end
+    if player == LocalPlayer then return true end
+    return LocalPlayer:IsFriendsWith(player.UserId)
+end
+
+local function IsSameTeam(player)
+    if not player or not player:IsA("Player") then return false end
+    if LocalPlayer.Team and player.Team then
+        return LocalPlayer.Team == player.Team
+    end
+    return false
+end
+
+local function IsKnockedOrDead(model)
+    if not model then return true end
+    local hum = model:FindFirstChildOfClass("Humanoid")
+    if not hum or hum.Health <= 0 then return true end
+
+    if model:FindFirstChild("KO") or model:FindFirstChild("Knocked") or model:FindFirstChild("IsDead") then
+        return true
+    end
+    if hum:GetState() == Enum.HumanoidStateType.Ragdoll or hum:GetState() == Enum.HumanoidStateType.Physics then
+        return true
+    end
+    return false
+end
+
+local function GetValidTargets()
+    local targets = {}
+    local includeNPCs = Toggles.Vis_IncludeNPCs and Toggles.Vis_IncludeNPCs.Value
+    local friendCheck = Toggles.Vis_FriendCheck and Toggles.Vis_FriendCheck.Value
+    local teamCheck = Toggles.Combat_TeamCheck and Toggles.Combat_TeamCheck.Value
+    local ignoreKnocked = Toggles.Combat_IgnoreKnocked and Toggles.Combat_IgnoreKnocked.Value
+    local maxDist = Options.Vis_MaxDistance and Options.Vis_MaxDistance.Value or 1000
+
+    local playerModels = {}
+
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer and player.Character then
+            playerModels[player.Character] = true
+            
+            local isTeam = teamCheck and IsSameTeam(player)
+            local isFriend = friendCheck and IsFriend(player)
+
+            if not (isTeam or isFriend) then
+                local model = player.Character
+                local hum = model:FindFirstChildOfClass("Humanoid")
+                local root = model:FindFirstChild("HumanoidRootPart") or model:FindFirstChild("Torso") or model.PrimaryPart
+
+                if hum and root and hum.Health > 0 then
+                    if not (ignoreKnocked and IsKnockedOrDead(model)) then
+                        local dist = (root.Position - Camera.CFrame.Position).Magnitude
+                        if dist <= maxDist then
+                            table.insert(targets, { Model = model, Player = player, Name = player.DisplayName or player.Name })
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    if includeNPCs then
+        for _, obj in ipairs(Workspace:GetDescendants()) do
+            if obj:IsA("Model") and obj ~= LocalPlayer.Character and not playerModels[obj] then
+                local hum = obj:FindFirstChildOfClass("Humanoid")
+                if hum and hum.Health > 0 then
+                    if not (ignoreKnocked and IsKnockedOrDead(obj)) then
+                        local root = obj:FindFirstChild("HumanoidRootPart") or obj:FindFirstChild("Torso") or obj:FindFirstChild("UpperTorso") or obj:FindFirstChild("Head")
+                        if root then
+                            local dist = (root.Position - Camera.CFrame.Position).Magnitude
+                            if dist <= maxDist then
+                                table.insert(targets, { Model = obj, Player = nil, Name = obj.Name })
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return targets
+end
+
+local function IsVisible(pos, wallCheckEnabled)
+    if not wallCheckEnabled then return true end
+    local origin = Camera.CFrame.Position
+    local dir = (pos - origin).Unit * (pos - origin).Magnitude
+    local params = RaycastParams.new()
+    params.FilterDescendantsInstances = {LocalPlayer.Character}
+    params.FilterType = Enum.RaycastFilterType.Blacklist
+    local result = Workspace:Raycast(origin, dir, params)
+    if not result then return true end
+    return (result.Position - pos).Magnitude < 3
+end
+
+local function GetSilentTarget()
+    if not (Toggles.Combat_SilentAim_Enable and Toggles.Combat_SilentAim_Enable.Value) then return nil end
+
+    local targetPartName = Options.Combat_SilentAim_Target and Options.Combat_SilentAim_Target.Value or "Head"
+    local fovRadius = Options.Combat_SilentAim_FovRadius and Options.Combat_SilentAim_FovRadius.Value or 150
+    local wallCheck = Toggles.Combat_SilentAim_WallCheck and Toggles.Combat_SilentAim_WallCheck.Value
+    local screenCenter = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+
+    local closestPart = nil
+    local shortestDistance = fovRadius
+
+    for _, targetInfo in ipairs(GetValidTargets()) do
+        local model = targetInfo.Model
+        local part = model:FindFirstChild(targetPartName) or model:FindFirstChild("Head") or model:FindFirstChild("HumanoidRootPart")
+        if part then
+            local screenPos, onScreen = Camera:WorldToViewportPoint(part.Position)
+            if onScreen then
+                local distFromCenter = (Vector2.new(screenPos.X, screenPos.Y) - screenCenter).Magnitude
+                if distFromCenter < shortestDistance then
+                    if IsVisible(part.Position, wallCheck) then
+                        shortestDistance = distFromCenter
+                        closestPart = part
+                    end
+                end
+            end
+        end
+    end
+    return closestPart
+end
+
+local oldIndex
+oldIndex = hookmetamethod(game, "__index", function(self, key)
+    if not checkcaller() and Toggles.Combat_SilentAim_Enable and Toggles.Combat_SilentAim_Enable.Value then
+        if key == "Hit" and self:IsA("Mouse") then
+            local target = GetSilentTarget()
+            if target then
+                return target.CFrame
+            end
+        elseif key == "Target" and self:IsA("Mouse") then
+            local target = GetSilentTarget()
+            if target then
+                return target
+            end
+        end
+    end
+    return oldIndex(self, key)
+end)
+
+local oldNamecall
+oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+
+    if not checkcaller() and Toggles.Combat_SilentAim_Enable and Toggles.Combat_SilentAim_Enable.Value then
+        if method == "Raycast" and self == Workspace then
+            local target = GetSilentTarget()
+            if target then
+                local origin = args[1]
+                local maxDist = Options.Combat_Aimbot_MaxDistance and Options.Combat_Aimbot_MaxDistance.Value or 1000
+                args[2] = (target.Position - origin).Unit * maxDist
+                return oldNamecall(self, unpack(args))
+            end
+        end
+    end
+    return oldNamecall(self, ...)
+end)
+
+local OriginalHitboxState = {}
+
+local function ResetHitboxes()
+    for part, state in pairs(OriginalHitboxState) do
+        if part and part.Parent then
+            pcall(function()
+                part.Size = state.Size
+                part.Transparency = state.Transparency
+                part.Material = state.Material
+                part.Reflectance = state.Reflectance
+                part.CanCollide = state.CanCollide
+                part.Massless = state.Massless
+            end)
+        end
+    end
+    table.clear(OriginalHitboxState)
+end
+
+local function GetTargetPartsForHitbox(model, targetType)
+    local parts = {}
+    if not model then return parts end
+
+    if targetType == "All Parts" then
+        for _, child in ipairs(model:GetChildren()) do
+            if child:IsA("BasePart") then
+                table.insert(parts, child)
+            end
+        end
+    elseif targetType == "Head" then
+        local p = model:FindFirstChild("Head")
+        if p then table.insert(parts, p) end
+    elseif targetType == "HumanoidRootPart" then
+        local p = model:FindFirstChild("HumanoidRootPart")
+        if p then table.insert(parts, p) end
+    elseif targetType == "Torso" then
+        local names = {"Torso", "UpperTorso", "LowerTorso"}
+        for _, name in ipairs(names) do
+            local p = model:FindFirstChild(name)
+            if p then table.insert(parts, p) end
+        end
+    elseif targetType == "Left Arm" then
+        local names = {"Left Arm", "LeftUpperArm", "LeftLowerArm", "LeftHand"}
+        for _, name in ipairs(names) do
+            local p = model:FindFirstChild(name)
+            if p then table.insert(parts, p) end
+        end
+    elseif targetType == "Right Arm" then
+        local names = {"Right Arm", "RightUpperArm", "RightLowerArm", "RightHand"}
+        for _, name in ipairs(names) do
+            local p = model:FindFirstChild(name)
+            if p then table.insert(parts, p) end
+        end
+    elseif targetType == "Left Leg" then
+        local names = {"Left Leg", "LeftUpperLeg", "LeftLowerLeg", "LeftFoot"}
+        for _, name in ipairs(names) do
+            local p = model:FindFirstChild(name)
+            if p then table.insert(parts, p) end
+        end
+    elseif targetType == "Right Leg" then
+        local names = {"Right Leg", "RightUpperLeg", "RightLowerLeg", "RightFoot"}
+        for _, name in ipairs(names) do
+            local p = model:FindFirstChild(name)
+            if p then table.insert(parts, p) end
+        end
+    end
+
+    return parts
+end
+
+local function ProcessHitboxExpander()
+    local enabled = Toggles.Combat_Hitbox_Enable and Toggles.Combat_Hitbox_Enable.Value
+    if not enabled then
+        if next(OriginalHitboxState) ~= nil then
+            ResetHitboxes()
+        end
+        return
+    end
+
+    local size = Options.Combat_Hitbox_Size and Options.Combat_Hitbox_Size.Value or 10
+    local targetType = Options.Combat_Hitbox_Target and Options.Combat_Hitbox_Target.Value or "HumanoidRootPart"
+    
+    local activeParts = {}
+
+    for _, targetInfo in ipairs(GetValidTargets()) do
+        local model = targetInfo.Model
+        local partsToExpand = GetTargetPartsForHitbox(model, targetType)
+
+        for _, part in ipairs(partsToExpand) do
+            if part:IsA("BasePart") then
+                activeParts[part] = true
+
+                if not OriginalHitboxState[part] then
+                    OriginalHitboxState[part] = {
+                        Size = part.Size,
+                        Transparency = part.Transparency,
+                        Material = part.Material,
+                        Reflectance = part.Reflectance,
+                        CanCollide = part.CanCollide,
+                        Massless = part.Massless
+                    }
+                end
+
+                pcall(function()
+                    part.Size = Vector3.new(size, size, size)
+                    part.Transparency = 1
+                    part.Material = Enum.Material.Glass
+                    part.Reflectance = 0
+                    part.CanCollide = false
+                    part.Massless = true
+                end)
+            end
+        end
+    end
+
+    for part, state in pairs(OriginalHitboxState) do
+        if not activeParts[part] then
+            if part and part.Parent then
+                pcall(function()
+                    part.Size = state.Size
+                    part.Transparency = state.Transparency
+                    part.Material = state.Material
+                    part.Reflectance = state.Reflectance
+                    part.CanCollide = state.CanCollide
+                    part.Massless = state.Massless
+                end)
+            end
+            OriginalHitboxState[part] = nil
+        end
+    end
+end
+
+local function GetBestTarget()
+    local bestTargetPart = nil
+    local bestDot = -1
+    local screenCenter = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+    local targetPartName = Options.Combat_Aimbot_Target and Options.Combat_Aimbot_Target.Value or "Head"
+    local maxDist = Options.Combat_Aimbot_MaxDistance and Options.Combat_Aimbot_MaxDistance.Value or 250
+    local fovRadius = Options.Combat_Fov_Radius and Options.Combat_Fov_Radius.Value or 80
+    local wallCheck = Toggles.Combat_Aimbot_WallCheck and Toggles.Combat_Aimbot_WallCheck.Value
+
+    for _, targetInfo in ipairs(GetValidTargets()) do
+        local model = targetInfo.Model
+        local part = model:FindFirstChild(targetPartName) or model:FindFirstChild("Head") or model:FindFirstChild("HumanoidRootPart")
+        if part then
+            local dist = (part.Position - Camera.CFrame.Position).Magnitude
+            if dist <= maxDist and IsVisible(part.Position, wallCheck) then
+                local screenPos, onScreen = Camera:WorldToViewportPoint(part.Position)
+                if onScreen then
+                    local screenVec = Vector2.new(screenPos.X, screenPos.Y)
+                    local distFromCenter = (screenVec - screenCenter).Magnitude
+
+                    if distFromCenter <= fovRadius then
+                        local dir = (part.Position - Camera.CFrame.Position).Unit
+                        local dot = Camera.CFrame.LookVector:Dot(dir)
+                        if dot > bestDot then
+                            bestDot = dot
+                            bestTargetPart = part
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return bestTargetPart
+end
+
+local R15_Bones = {
+    {"Head", "UpperTorso"}, {"UpperTorso", "LowerTorso"}, {"UpperTorso", "LeftUpperArm"},
+    {"LeftUpperArm", "LeftLowerArm"}, {"LeftLowerArm", "LeftHand"}, {"UpperTorso", "RightUpperArm"},
+    {"RightUpperArm", "RightLowerArm"}, {"RightLowerArm", "RightHand"}, {"LowerTorso", "LeftUpperLeg"},
+    {"LeftUpperLeg", "LeftLowerLeg"}, {"LeftLowerLeg", "LeftFoot"}, {"LowerTorso", "RightUpperLeg"},
+    {"RightUpperLeg", "RightLowerLeg"}, {"RightLowerLeg", "RightFoot"}
+}
+
+local R6_Bones = {
+    {"Head", "Torso"}, {"Torso", "Left Arm"}, {"Torso", "Right Arm"},
+    {"Torso", "Left Leg"}, {"Torso", "Right Leg"}
+}
+
+local ActiveESP = {}
+
+local function CreateESPContainer(model)
+    local esp = {
+        Model = model,
+        BoxLines = {},
+        CornerLines = {},
+        HealthBG = Drawing.new("Line"),
+        HealthBar = Drawing.new("Line"),
+        Tracer = Drawing.new("Line"),
+        NameTag = Drawing.new("Text"),
+        SkeletonLines = {}
+    }
+
+    for i = 1, 4 do
+        local line = Drawing.new("Line")
+        line.Visible = false
+        table.insert(esp.BoxLines, line)
+    end
+
+    for i = 1, 8 do
+        local line = Drawing.new("Line")
+        line.Visible = false
+        table.insert(esp.CornerLines, line)
+    end
+
+    for i = 1, 15 do
+        local line = Drawing.new("Line")
+        line.Visible = false
+        table.insert(esp.SkeletonLines, line)
+    end
+
+    esp.NameTag.Center = true
+    esp.NameTag.Outline = true
+    esp.NameTag.Size = 16
+    esp.NameTag.Visible = false
+
+    function esp:HideAll()
+        for _, l in ipairs(self.BoxLines) do l.Visible = false end
+        for _, l in ipairs(self.CornerLines) do l.Visible = false end
+        for _, l in ipairs(self.SkeletonLines) do l.Visible = false end
+        self.HealthBG.Visible = false
+        self.HealthBar.Visible = false
+        self.Tracer.Visible = false
+        self.NameTag.Visible = false
+    end
+
+    function esp:Destroy()
+        self:HideAll()
+        for _, l in ipairs(self.BoxLines) do pcall(function() l:Remove() end) end
+        for _, l in ipairs(self.CornerLines) do pcall(function() l:Remove() end) end
+        for _, l in ipairs(self.SkeletonLines) do pcall(function() l:Remove() end) end
+        pcall(function() self.HealthBG:Remove() end)
+        pcall(function() self.HealthBar:Remove() end)
+        pcall(function() self.Tracer:Remove() end)
+        pcall(function() self.NameTag:Remove() end)
+    end
+
+    return esp
+end
+
+local function UpdateESP(esp, targetInfo)
+    local model = esp.Model
+    if not model or not model.Parent then
+        esp:Destroy()
+        return false
+    end
+
+    local masterEnabled = Toggles.Master_ESP_Enable and Toggles.Master_ESP_Enable.Value
+    if not masterEnabled then
+        esp:HideAll()
+        return true
+    end
+
+    local hum = model:FindFirstChildOfClass("Humanoid")
+    local root = model:FindFirstChild("HumanoidRootPart") or model:FindFirstChild("Torso") or model:FindFirstChild("Head") or model.PrimaryPart
+
+    if not root or not hum or hum.Health <= 0 then
+        esp:HideAll()
+        return true
+    end
+
+    local rootPos, onScreen = Camera:WorldToViewportPoint(root.Position)
+    if not onScreen then
+        esp:HideAll()
+        return true
+    end
+
+    local head = model:FindFirstChild("Head")
+    local topPos = head and Camera:WorldToViewportPoint(head.Position + Vector3.new(0, 0.5, 0)) or Camera:WorldToViewportPoint(root.Position + Vector3.new(0, 3, 0))
+    local bottomPos = Camera:WorldToViewportPoint(root.Position - Vector3.new(0, 3.5, 0))
+
+    local boxHeight = math.abs(topPos.Y - bottomPos.Y)
+    local boxWidth = boxHeight * 0.65
+    local boxPos = Vector2.new(rootPos.X - boxWidth / 2, topPos.Y)
+
+    local boxThick = Options.Esp_BoxThickness and Options.Esp_BoxThickness.Value or 2
+    local tracerThick = Options.Esp_TracerThickness and Options.Esp_TracerThickness.Value or 2
+    local skelThick = Options.Esp_SkelThickness and Options.Esp_SkelThickness.Value or 2
+    local textSize = Options.Esp_TextSize and Options.Esp_TextSize.Value or 16
+
+    local boxEnabled = Toggles.Box_Enable and Toggles.Box_Enable.Value
+    local boxStyle = Options.Box_Style and Options.Box_Style.Value or "2D Box"
+    local boxColor = GetColor(Options.Box_Color and Options.Box_Color.Value)
+
+    if boxEnabled then
+        if boxStyle == "2D Box" then
+            for _, l in ipairs(esp.CornerLines) do l.Visible = false end
+            local p1, p2 = boxPos, boxPos + Vector2.new(boxWidth, 0)
+            local p3, p4 = boxPos + Vector2.new(boxWidth, boxHeight), boxPos + Vector2.new(0, boxHeight)
+
+            local lines = { {p1, p2}, {p2, p3}, {p3, p4}, {p4, p1} }
+            for i, lineData in ipairs(lines) do
+                local l = esp.BoxLines[i]
+                l.Thickness = boxThick
+                l.Color = boxColor
+                l.From, l.To = lineData[1], lineData[2]
+                l.Visible = true
+            end
+        elseif boxStyle == "2D Corner Box" then
+            for _, l in ipairs(esp.BoxLines) do l.Visible = false end
+            local cLen = boxWidth * 0.25
+            local x1, y1 = boxPos.X, boxPos.Y
+            local x2, y2 = boxPos.X + boxWidth, boxPos.Y + boxHeight
+
+            local corners = {
+                {Vector2.new(x1, y1), Vector2.new(x1 + cLen, y1)}, {Vector2.new(x1, y1), Vector2.new(x1, y1 + cLen)},
+                {Vector2.new(x2, y1), Vector2.new(x2 - cLen, y1)}, {Vector2.new(x2, y1), Vector2.new(x2, y1 + cLen)},
+                {Vector2.new(x1, y2), Vector2.new(x1 + cLen, y2)}, {Vector2.new(x1, y2), Vector2.new(x1, y2 - cLen)},
+                {Vector2.new(x2, y2), Vector2.new(x2 - cLen, y2)}, {Vector2.new(x2, y2), Vector2.new(x2, y2 - cLen)}
+            }
+
+            for i, lineData in ipairs(corners) do
+                local l = esp.CornerLines[i]
+                l.Thickness = boxThick
+                l.Color = boxColor
+                l.From, l.To = lineData[1], lineData[2]
+                l.Visible = true
+            end
+        end
+    else
+        for _, l in ipairs(esp.BoxLines) do l.Visible = false end
+        for _, l in ipairs(esp.CornerLines) do l.Visible = false end
+    end
+
+    local healthEnabled = Toggles.Health_Enable and Toggles.Health_Enable.Value
+    local healthPos = Options.Health_Position and Options.Health_Position.Value or "Left"
+
+    if healthEnabled then
+        local currentHealth = hum.Health
+        local maxHealth = hum.MaxHealth > 0 and hum.MaxHealth or 100
+        local healthPct = math.clamp(currentHealth / maxHealth, 0, 1)
+        local bgFrom, bgTo, barFrom, barTo
+
+        if healthPos == "Left" then
+            local barX = boxPos.X - 6
+            bgFrom = Vector2.new(barX, boxPos.Y)
+            bgTo = Vector2.new(barX, boxPos.Y + boxHeight)
+            barFrom = Vector2.new(barX, boxPos.Y + boxHeight)
+            barTo = Vector2.new(barX, boxPos.Y + boxHeight - (boxHeight * healthPct))
+        elseif healthPos == "Right" then
+            local barX = boxPos.X + boxWidth + 6
+            bgFrom = Vector2.new(barX, boxPos.Y)
+            bgTo = Vector2.new(barX, boxPos.Y + boxHeight)
+            barFrom = Vector2.new(barX, boxPos.Y + boxHeight)
+            barTo = Vector2.new(barX, boxPos.Y + boxHeight - (boxHeight * healthPct))
+        elseif healthPos == "Top" then
+            local barY = boxPos.Y - 6
+            bgFrom = Vector2.new(boxPos.X, barY)
+            bgTo = Vector2.new(boxPos.X + boxWidth, barY)
+            barFrom = Vector2.new(boxPos.X, barY)
+            barTo = Vector2.new(boxPos.X + (boxWidth * healthPct), barY)
+        elseif healthPos == "Bottom" then
+            local barY = boxPos.Y + boxHeight + 6
+            bgFrom = Vector2.new(boxPos.X, barY)
+            bgTo = Vector2.new(boxPos.X + boxWidth, barY)
+            barFrom = Vector2.new(boxPos.X, barY)
+            barTo = Vector2.new(boxPos.X + (boxWidth * healthPct), barY)
+        end
+
+        esp.HealthBG.Visible = true
+        esp.HealthBG.From = bgFrom
+        esp.HealthBG.To = bgTo
+        esp.HealthBG.Color = Color3.fromRGB(30, 30, 30)
+        esp.HealthBG.Thickness = boxThick
+
+        esp.HealthBar.Visible = true
+        esp.HealthBar.From = barFrom
+        esp.HealthBar.To = barTo
+        esp.HealthBar.Color = Color3.fromRGB(255, 0, 0):Lerp(Color3.fromRGB(0, 255, 0), healthPct)
+        esp.HealthBar.Thickness = boxThick
+    else
+        esp.HealthBG.Visible = false
+        esp.HealthBar.Visible = false
+    end
+
+    local tracerEnabled = Toggles.Tracer_Enable and Toggles.Tracer_Enable.Value
+    local tracerOrigin = Options.Tracer_Origin and Options.Tracer_Origin.Value or "Bottom"
+    local tracerColor = GetColor(Options.Tracer_Color and Options.Tracer_Color.Value)
+
+    if tracerEnabled then
+        local startPos = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y)
+
+        if tracerOrigin == "Bottom" then
+            startPos = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y)
+        elseif tracerOrigin == "Middle" then
+            startPos = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+        elseif tracerOrigin == "Top" then
+            startPos = Vector2.new(Camera.ViewportSize.X / 2, 0)
+        elseif tracerOrigin == "Mouse" then
+            startPos = UserInputService:GetMouseLocation()
+        end
+
+        esp.Tracer.Visible = true
+        esp.Tracer.From = startPos
+        esp.Tracer.To = Vector2.new(rootPos.X, rootPos.Y)
+        esp.Tracer.Color = tracerColor
+        esp.Tracer.Thickness = tracerThick
+    else
+        esp.Tracer.Visible = false
+    end
+
+    local tagEnabled = Toggles.Tags_Name and Toggles.Tags_Name.Value
+    local tagColor = GetColor(Options.Tags_NameColor and Options.Tags_NameColor.Value)
+    if tagEnabled then
+        local hpVal = math.floor(hum.Health)
+        esp.NameTag.Size = textSize
+        esp.NameTag.Position = Vector2.new(rootPos.X, boxPos.Y - (textSize + 4))
+        esp.NameTag.Text = string.format("%s [%d]", targetInfo.Name, hpVal)
+        esp.NameTag.Color = tagColor
+        esp.NameTag.Visible = true
+    else
+        esp.NameTag.Visible = false
+    end
+
+    local skelEnabled = Toggles.Skel_Enable and Toggles.Skel_Enable.Value
+    local skelColor = GetColor(Options.Skel_Color and Options.Skel_Color.Value)
+    if skelEnabled then
+        local boneList = (hum.RigType == Enum.HumanoidRigType.R15) and R15_Bones or R6_Bones
+        for i, pair in ipairs(boneList) do
+            local partA = model:FindFirstChild(pair[1])
+            local partB = model:FindFirstChild(pair[2])
+            local line = esp.SkeletonLines[i]
+
+            if partA and partB and line then
+                local posA, visA = Camera:WorldToViewportPoint(partA.Position)
+                local posB, visB = Camera:WorldToViewportPoint(partB.Position)
+
+                if visA and visB then
+                    line.Thickness = skelThick
+                    line.Color = skelColor
+                    line.From = Vector2.new(posA.X, posA.Y)
+                    line.To = Vector2.new(posB.X, posB.Y)
+                    line.Visible = true
+                else
+                    line.Visible = false
+                end
+            elseif line then
+                line.Visible = false
+            end
+        end
+    else
+        for _, l in ipairs(esp.SkeletonLines) do l.Visible = false end
+    end
+
+    return true
+end
+
+RunService.RenderStepped:Connect(function(deltaTime)
+    ProcessHitboxExpander()
+
+    local fovEnabled = Toggles.Combat_Fov_Enable and Toggles.Combat_Fov_Enable.Value
+    local fovRadius = (Toggles.Combat_SilentAim_Enable and Toggles.Combat_SilentAim_Enable.Value and Options.Combat_SilentAim_FovRadius and Options.Combat_SilentAim_FovRadius.Value) or (Options.Combat_Fov_Radius and Options.Combat_Fov_Radius.Value or 80)
+    local fovColor = Options.Combat_Fov_Color and Options.Combat_Fov_Color.Value or Color3.fromRGB(0, 255, 100)
+
+    if fovEnabled and fovRadius > 0 then
+        local size = fovRadius * 2
+        FovFrame.Size = UDim2.new(0, size, 0, size)
+        FovFrame.Position = UDim2.new(0, Camera.ViewportSize.X / 2, 0, Camera.ViewportSize.Y / 2)
+        FovStroke.Color = fovColor
+        FovFrame.Visible = true
+    else
+        FovFrame.Visible = false
+    end
+
+    if Toggles.Combat_Aimbot_Enable and Toggles.Combat_Aimbot_Enable.Value then
+        local targetPart = GetBestTarget()
+        if targetPart then
+            local targetPos = targetPart.Position
+
+            if Toggles.Combat_Aimbot_Prediction_Enable and Toggles.Combat_Aimbot_Prediction_Enable.Value then
+                local predAmount = Options.Combat_Aimbot_Prediction_Amount and Options.Combat_Aimbot_Prediction_Amount.Value or 0.165
+                local velocity = Vector3.zero
+                
+                if targetPart.AssemblyLinearVelocity then
+                    velocity = targetPart.AssemblyLinearVelocity
+                elseif targetPart.Parent and targetPart.Parent:FindFirstChild("HumanoidRootPart") then
+                    velocity = targetPart.Parent.HumanoidRootPart.AssemblyLinearVelocity
+                end
+                
+                targetPos = targetPos + (velocity * predAmount)
+            end
+
+            local targetCFrame = CFrame.new(Camera.CFrame.Position, targetPos)
+
+            if Toggles.Combat_Aimbot_Smooth_Enable and Toggles.Combat_Aimbot_Smooth_Enable.Value then
+                local smoothValue = Options.Combat_Aimbot_Smooth_Amount and Options.Combat_Aimbot_Smooth_Amount.Value or 10
+                local alpha = math.clamp(deltaTime * (60 / smoothValue), 0, 1)
+                Camera.CFrame = Camera.CFrame:Lerp(targetCFrame, alpha)
+            else
+                Camera.CFrame = targetCFrame
+            end
+        end
+    end
+
+    local validTargets = GetValidTargets()
+    local currentModels = {}
+
+    for _, targetInfo in ipairs(validTargets) do
+        currentModels[targetInfo.Model] = true
+        if not ActiveESP[targetInfo.Model] then
+            ActiveESP[targetInfo.Model] = CreateESPContainer(targetInfo.Model)
+        end
+        UpdateESP(ActiveESP[targetInfo.Model], targetInfo)
+    end
+
+    for model, esp in pairs(ActiveESP) do
+        if not currentModels[model] then
+            esp:Destroy()
+            ActiveESP[model] = nil
+        end
+    end
+end)
+
+Library:Notify("Painel Ricky VIP Carregado!")
